@@ -1,0 +1,3 @@
+MIN_TEXT_LENGTH = 200
+REPORT_DIR = "reports"
+
