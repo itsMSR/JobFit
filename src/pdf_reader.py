@@ -1,5 +1,6 @@
 import os
 import pdfplumber
+from io import BytesIO
 
 def extract_text_from_pdf(pdf_path: str) -> str:
     pdf_path = pdf_path.strip().strip('"').strip("'")
@@ -18,10 +19,14 @@ def extract_text_from_pdf(pdf_path: str) -> str:
                 all_text.append(text)
                 
     combined =  "\n".join(all_text).strip()
-    if not combined:
-        raise ValueError(
-            "No extractable text found in the PDF"
-            "If this is a scanner PDF, you may need OCR (we'll handle later)."
-        )
-        
     return combined
+
+def extract_text_from_pdf_bytes(pdf_bytes: bytes) -> str:
+    """Extract text directly from uploaded PDF bytes (used by API)."""
+    all_text = []
+    with pdfplumber.open(BytesIO(pdf_bytes)) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            if text:
+                all_text.append(text)
+    return "\n".join(all_text)
