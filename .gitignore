@@ -1,16 +1,47 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Virtual env
+# =========================
+# Virtual environments
+# =========================
 .venv/
 venv/
 
-# OS / editor
+# =========================
+# Node / Frontend
+# =========================
+node_modules/
+.next/
+out/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+
+# =========================
+# User data / uploads
+# =========================
+data/
+reports/
+*.pdf
+*.txt
+*.json
+
+# =========================
+# OS / Editor
+# =========================
 .DS_Store
 .vscode/
+.idea/
 
-# Outputs
-reports/
+# =========================
+# Logs
+# =========================
+*.log
